@@ -1,0 +1,205 @@
+/* Config */
+
+.searchdiv{
+    height: auto;
+    margin: 0 auto;
+    border: 1 solid black;
+    width: 50%;
+}
+
+html,body{
+  min-height:100%;
+  min-width: 100%;
+  background-image: linear-gradient(to right, rgba(234, 82, 248,1), rgba(0, 102, 255,0.85))!important;
+  /*
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  */
+}
+
+/*:root {
+  --shadow-color: #FF9E9E;
+  --shadow-color-light: white;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Allignement */
+
+.centered-axis-x {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+
+.centered-axis-y {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+
+.centered-axis-xy {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%,-40%);
+    width: 30%;
+}
+
+
+.relative-pos-center {
+    position: relative;
+    text-align: center;
+}
+
+.margtop50 {
+  margin-top: 50;
+}
+
+
+/* Colors */
+
+#grad_diagonal_red_reddark {
+  background-image: linear-gradient(to bottom right, #E7482C, #FFA80000 );   
+}
+
+
+#grad_red_to_dissolve {
+  background-image: linear-gradient(to right, rgba(255,0,0,0.3), rgba(255,0,0,1));
+}
+
+#grad_orange_to_yellow_dissolve{
+  background-image: linear-gradient(to right, rgba(252,74,26,0.9), rgba(247,183,51,1));
+}
+
+
+#grad_purple_to_blue_dissolve > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover{
+  background-image: linear-gradient(to right, rgba(234, 82, 248,1), rgba(0, 102, 255,0.85));
+}
+
+
+/* Button */
+
+.button_css {
+    background-image: linear-gradient(to right, rgba(244, 82, 248,1), rgba(0, 102, 255,0.8));
+    color: #F5F5F5;
+}
+
+
+/* Text */
+
+.text_bold {
+    font-weight: 900;
+}
+
+.text_bold_2 {
+    font-weight: 600;
+}
+
+.text_color_silver_dark {
+    color: #F7F30F;
+}
+
+
+.text_color_silver_light {
+    color:#FCFCFC;
+}
+
+.text_title_gradient {
+  background: -webkit-linear-gradient(#E7482C, #FFA80000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text_shadow {
+    text-shadow: 1px 1px 3px black;
+}
+
+.text_shadow_soft {
+    text-shadow: 1px 1px 3px black;
+}
+
+
+/* Image filters */
+
+.transparent {
+   border:none;
+   background-color:transparent;
+   outline:none;
+}
+
+
+/* Animation */
+
+    /* NEON */
+
+/*    
+p {
+  margin: calc(50vh - 40px) auto 0 auto;
+  font-size: 65px;
+  text-transform: uppercase;
+  font-family: "Archivo Black", "Archivo", sans-serif;
+  font-weight: normal;
+  display: block;
+  height: auto;
+  text-align: center;
+}
+
+.logo-1 {
+  color: white;
+  animation: neon 3s infinite;
+}
+
+@keyframes neon {
+  0% {
+    text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
+    0 0 3px var(--shadow-color-light), 0 0 10px var(--shadow-color-light), 0 0 20px var(--shadow-color-light),
+    0 0 30px var(--shadow-color), 0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color), 0 0 70px var(--shadow-color), 0 0 100px var(--shadow-color), 0 0 200px var(--shadow-color);
+  }
+  50% {
+    text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
+    0 0 5px var(--shadow-color-light), 0 0 15px var(--shadow-color-light), 0 0 25px var(--shadow-color-light),
+    0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color), 0 0 60px var(--shadow-color), 0 0 80px var(--shadow-color), 0 0 110px var(--shadow-color), 0 0 210px var(--shadow-color);
+  }
+  100% {
+    text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
+    0 0 3px var(--shadow-color-light), 0 0 10px var(--shadow-color-light), 0 0 20px var(--shadow-color-light),
+    0 0 30px var(--shadow-color), 0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color), 0 0 70px var(--shadow-color), 0 0 100px var(--shadow-color), 0 0 200px var(--shadow-color);
+  }
+}
+*/
+    /* Gaussian blur in */
+/*
+span {
+  position: relative;
+  font-weight: 900;
+  font-size: 64px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-block;
+}
+
+
+span:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: attr(filter-content);
+  filter: url(#motion-blur-filter);
+}
+
+
+
+svg {
+  display: none;
+}
+*/
