@@ -1,6 +1,7 @@
 <?php
-include 'classes/db.php';
-include 'classes/builder.php';
+include $_SERVER['DOCUMENT_ROOT'] . 'martingale/classes/db.php';
+include $_SERVER['DOCUMENT_ROOT'] . 'martingale/classes/builder.php';
+include $_SERVER['DOCUMENT_ROOT'] . 'martingale/classes/inputcontrol.php'; 
 
 builder::Header();
 Builder::Navbar();

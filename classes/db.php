@@ -117,20 +117,19 @@ class DB
 
         if ($code == -1) {
 
-            if ($command == 'empty') {
-                $return = 'La combinazione di parametri della funzione è inconcludente';
+            $report = InputControl::getLeaguesCTRL($command);
+            if ($report != '') return $report; 
+
+            //if ($command == 'options') {
+
+            $leagues = $conn->query($sql);
+            while ($league = $leagues->fetch_assoc()) {
+
+                $leagueCode = $league['id_league'];
+                $leagueName = $league['description'];
+                $return .= "<option value='{$leagueCode}'>$leagueName</option>\n";
             }
-
-            if ($command == 'options') {
-
-                $leagues = $conn->query($sql);
-                while ($league = $leagues->fetch_assoc()) {
-
-                    $leagueCode = $league['id_league'];
-                    $leagueName = $league['description'];
-                    $return .= "<option value='{$leagueCode}'>$leagueName</option>\n";
-                }
-            }
+            //}
         } else {
 
             $sql .= " WHERE id_league = '{$code}'";
@@ -142,25 +141,19 @@ class DB
     }
 
     function addMartingale($description,$date) {
-
-        
-        $conn = $this->getMartDBonn();
-
+                
         $today = date('Y-m-d');
-        $error = '';
+        $conn = $this->getMartDBonn();
 
         $check = $conn->query("SELECT id_m FROM martingale WHERE description = '{$description}' AND date = '{$date}'");
        
-        if ($check->num_rows == 0 && $date >= $today ) { 
-
+        $err = InputControl::addMartingaleCTRL($check->num_rows, $date,$today);
+       
+        if ($err == '') { 
             $sql = "INSERT INTO martingale (description , date) VALUES ('{$description}','{$date}')";
             $conn->query($sql); 
         }
-        else {
-             $check->num_rows > 0 ? $error = 'Martingala gi&agrave presente.<BR>' : $error = '';
-            $date < $today ? $error .= 'Flusso canalizzatore rotto.' : $error;
-        }
-        if ($error != '') Builder::javaAlert('Errore',$error,'martingale.php');
+        
     }
 
     function addFixtureDB($idF,$idM) {
@@ -172,5 +165,59 @@ class DB
             $conn->query($sql);
         } 
     }
+
+
+    function  getOpinionisti($anaID = '%%')
+    {
+      
+        $connOpinionisti = $this->getRRMySQLConn();
+        
+        $sql = "SELECT * FROM Mopinionisti WHERE anaID LIKE '{$anaID}' ORDER BY anaCognome ASC";
+        $return = '';
+
+        $opinionistiA = $connOpinionisti->query($sql);
+
+        while ($op = $opinionistiA->fetch_assoc()) {
+
+            $opID = $op['anaID'];
+            $opCognomeNome = $op['anaCognome'] . ' ' . $op['anaNome'];
+            
+           
+            $return .= "<option value='{$opID}'>{$opCognomeNome}</option>\n";
+       
+
+        } 
+     
+        return $return;
+    }
     
+
+    public function insertPrediction($idO,$idF,$idPT) {
+
+        $conn = $this->getMartDBonn();
+        
+        //cancello tutte le previsioni precedenti per quell'opinionista
+        $delSql = "DELETE FROM predictions WHERE id_o = {$idO} AND id_f = {$idF}";
+        $conn->query($delSql);
+
+        $insSql = "INSERT INTO predictions (id_o,id_f,id_pt) VALUES ({$idO},{$idF},{$idPT})";
+        $conn->query($insSql);
+
+
+    }
+
+    public function getPredictionValue($idPT) {
+
+        $conn = $this->getMartDBonn();
+        $sql = "SELECT type FROM predictiontype WHERE id_pt = {$idPT}";
+        $result = $conn->query($sql);
+
+        $return = $result->fetch_array()[0];
+
+        return $return;
+
+
+
+    }
+
 }

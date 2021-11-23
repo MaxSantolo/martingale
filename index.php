@@ -1,6 +1,7 @@
 <?php 
-include 'classes/db.php';
-include 'classes/builder.php';
+include $_SERVER['DOCUMENT_ROOT'] . 'martingale/classes/db.php';
+include $_SERVER['DOCUMENT_ROOT'] . 'martingale/classes/builder.php';
+include $_SERVER['DOCUMENT_ROOT'] . 'martingale/classes/inputcontrol.php'; 
 
 Builder::Header();
 //echo "<body id='grad_purple_to_blue_dissolve'>";

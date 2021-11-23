@@ -1,6 +1,19 @@
 <?php 
-include 'classes/db.php';
-include 'classes/builder.php';
+include $_SERVER['DOCUMENT_ROOT'] . 'martingale/classes/db.php';
+include $_SERVER['DOCUMENT_ROOT'] . 'martingale/classes/builder.php';
+include $_SERVER['DOCUMENT_ROOT'] . 'martingale/classes/inputcontrol.php'; 
+include $_SERVER['DOCUMENT_ROOT'] . 'martingale/classes/report.php'; 
+
+
+
+/* Pre-compilation */
+$log_bot = new Report;
+
+for( $i=1; $i<=206; $i++ ){
+    $log_bot->add_event('On fire', 'Delete');
+}
+
+//$log_bot->blank_file();
 
 Builder::Header();
 //echo "<body id='grad_purple_to_blue_dissolve'>";
@@ -14,34 +27,17 @@ $db = new DB;
 $connOpinionisti = $db->getRRMySQLConn();
 $connMartingale = $db->getMartDBonn();
 
-//print_r($connOpinionisti);
-
 //echo ('<link type="text/css" rel=stylesheet" href="css/baseline.css" />');
 
 
 $opinionistiA = $connOpinionisti->query('select * from Mopinionisti');
 
-/* while ($op = $opinionistiA->fetch_assoc()) {
-
-        echo('ID: ' . $op['anaID']);
-        echo('<BR>');
-        echo('Cognome: ' . ($op['anaCognome']));
-        echo('<BR>');
-        echo('Nome: ' . ($op['anaNome']));
-        echo('<HR>');
-
-    } */
-
 //TODO: attenzione ID delle competizioni cambia annualmente, renderlo parametro in DB
-
-            
-            
-
+           
 /* HTML */
 
 Builder::spawnNewMartingaleForm($db);
 Builder::spawnMartingale($db);
-
 
 
 
